@@ -1,19 +1,19 @@
 import mongoose, { Schema } from 'mongoose';
 
 
-const UserSchema = Schema({
-  email: {
+const StringSchema = Schema({
+  messageid: {
     type: String,
     required: true,
   },
-  password: {
+  message: {
     type: String,
     required: true,
   },
-  apps: [{
+  translations: [{
     type: Schema.Types.ObjectId,
-    ref: 'App',
+    ref: 'Translation',
   }],
 }, { timestamps: true });
 
-export default mongoose.model('User', UserSchema);
+export default mongoose.model('String', StringSchema);

@@ -12,14 +12,4 @@ describe('Index router', () => {
         .end(done);
     });
   });
-
-  describe('GET /admin', () => {
-    it('should return HTML', done => {
-      request(app)
-        .get('/admin')
-        .expect('Content-Type', /html/)
-        .expect(200)
-        .end(done);
-    });
-  });
 });

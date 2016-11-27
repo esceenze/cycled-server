@@ -9,20 +9,20 @@ import User from '../models/User';
 const router = express.Router();
 
 router.post('/api/authenticate', (req, res, next) => {
-  User.findOne({ email: req.body.email }).populate('companies').exec((err, user) => {
+  User.findOne({ email: req.body.email }).populate('apps').exec((err, user) => {
     if (err) {
       return next(err);
     }
 
     const incorrectCredentials = !user || user.password !== req.body.password;
     if (incorrectCredentials) {
-      return res.sendStatus(404);
+      return res.sendStatus(401);
     }
 
     const expires = 1440 * 60;
     const token = jwt.sign({ userId: user.id }, config.tokenSecret, { expiresIn: expires });
 
-    res.json({ token, expires });
+    res.json({ token, expires, id: user.id });
   });
 });
 

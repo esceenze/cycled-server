@@ -1,18 +1,15 @@
 import mongoose, { Schema } from 'mongoose';
 
 
-const CompanySchema = Schema({
-  title: {
+const LanguageSchema = Schema({
+  label: {
     type: String,
     required: true,
   },
-  alias: {
+  abbr: {
     type: String,
     required: true,
-  },
-  logoLink: {
-    type: String,
   },
 }, { timestamps: true });
 
-export default mongoose.model('Company', CompanySchema);
+export default mongoose.model('Language',LanguageSchema);

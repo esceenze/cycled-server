@@ -1,12 +1,12 @@
 import express from 'express';
 
-import Feedback from '../models/Feedback';
+import App from '../models/app';
 
 
 const router = express.Router();
 
-router.get('/api/feedback', (req, res, next) => {
-  if (!req.query.quiz) {
+router.get('/api/apps', (req, res, next) => {
+  if (!req.query.userId) {
     return res.sendStatus(400);
   }
 

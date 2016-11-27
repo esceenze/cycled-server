@@ -11,7 +11,7 @@ describe('User router', () => {
     it('should return 404 for invalid credentioals', done => {
       request(app)
         .post('/api/authenticate')
-        .expect(404)
+        .expect(402)
         .end(done);
     });
 

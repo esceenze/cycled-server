@@ -1,5 +1,6 @@
-import './Company';
 import './User';
-import './Customer';
-import './Quiz';
-import './Feedback';
+import './App';
+import './Component';
+import './Language';
+import './String';
+import './Translation';

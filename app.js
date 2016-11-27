@@ -7,14 +7,17 @@ import path from 'path';
 import config from './config';
 import routes from './routes/index';
 import user from './routes/user';
-import quiz from './routes/quiz';
-import feedback from './routes/feedback';
-
 
 import './models';
 mongoose.connect(config.mongodbUri);
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 const publicPath = path.join(process.cwd(), '.public');
 app.use('/public', express.static(publicPath));
@@ -27,8 +30,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(user);
-app.use(quiz);
-app.use(feedback);
 app.use(routes);
 
 // catch 404 and forward to error handler
